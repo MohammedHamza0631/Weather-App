@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-image: linear-gradient(to right, #fff, #444);
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.search button {
+  position: relative;
+  top: 0px;
+  margin-left: 10px;
+  background: rgb(255, 255, 255);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #000;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+.search button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  left: 2px;
+  transition: all 0.3s ease;
+}
+input {
+  border: 1px solid #000;
+  border-radius: 40px;
+  padding: 5px 10px 5px 10px;
+  font-size: 18px;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+input:focus {
+  border: 1px solid #323232e9;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+}
+.current button {
+  position: relative;
+  top: 0px;
+  background: rgb(38, 203, 38);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.current button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 40px;
+  border: 1px solid #000;
+  background: #d9d9d9;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #323232;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #323232;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.details {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 15px;
+}
+
+.date-time,
+.day5 {
+  text-align: center;
+  grid-column: span 1;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.5);
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  background: #d9d9d9;
+}
+.date-time {
+  align-items: center;
+  justify-content: center;
+}
+.date-time .city {
+  font-size: 20px;
+  font-weight: 400;
+}
+.date-time .time {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.Hourly {
+  text-align: center;
+  grid-column: span 2; /* Each of these divs will take two columns */
+  border: 1px solid transparent;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  background: #b0bdc5;
+}
+
+.weather {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  background: #d9d9d9;
+}
+.weather .col1,
+.weather .col2,
+.weather .col3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #d9d9d9;
+}
+.weather .col3 .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+.humidity,
+.pressure {
+  margin-right: 80px;
+}
+.weather-item {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 5px;
+}
+
+.sunset-time img {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  filter: invert(1);
+}
+.sunrise-time img {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  filter: invert(1);
+}
+.sunset-time,
+.sunrise-time {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.col3 img {
+  align-self: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.5);
+  filter: invert(1);
+}
+.col3 span {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.temp {
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+.temp-feels {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.col2 span {
+  font-size: 2.1rem;
+  font-weight: 500;
+}
+.pressure,
+.humidity {
+  margin-right: 30px;
+}
+.date-time .city {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.date-time .time {
+  font-size: 4.1rem;
+  font-weight: 700;
+}
+.date-time .day {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+/* Dark Mode Styles */
+.dark-mode {
+  background-image: linear-gradient(to right, #636363, #373636);
+}
+.dark-mode .search button {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+  border: 1px solid transparent;
+}
+.dark-mode .search button img {
+  filter: invert(1);
+}
+.dark-mode input {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+  border: 1px solid transparent;
+  color: #ffffff;
+}
+.dark-mode input::placeholder {
+  color: #ffffff;
+}
+.dark-mode input:focus {
+  border: 1px solid #b7b6b6e9;
+  box-shadow: 0 0 1px #ffffff;
+}
+.dark-mode .weather {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+  color: #fff;
+}
+.dark-mode .weather .col1,
+.dark-mode .weather .col2,
+.dark-mode .weather .col3 {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+  color: #fff;
+}
+.dark-mode .sunrise-time img {
+  filter: invert(0);
+}
+.dark-mode .sunset-time img {
+  filter: invert(0);
+}
+.dark-mode .col2 img {
+  filter: invert(0);
+}
+.dark-mode .col3 img {
+  filter: invert(0);
+}
+.dark-mode .date-time {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+  color: #fff;
+}
+
+/* Mobile (320px - 425px) */
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  body {
+    background-image: linear-gradient(#444, #fff);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .header {
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .search {
+    margin-top: 5px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .weather {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .weather .col1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows with equal height */
+    gap: 10px; /* Gap between grid items */
+  }
+  .weather .col3 {
+    display: flex;
+    flex-direction: row; /* Display icons in a row */
+    justify-content: space-between; /* Distribute space between icons */
+  }
+  .weather-item img {
+    width: 40px; /* Adjust the size of the icons */
+    height: 40px;
+  }
+  .temp {
+    font-size: 2.3rem;
+  }
+
+  .temp-feels {
+    font-size: 1.1rem;
+  }
+  .col2 img {
+    width: 100px;
+    height: 90px;
+  }
+  .col2 span {
+    font-size: 1.4rem;
+  }
+
+  .pressure,
+  .humidity {
+    margin-right: 15px;
+  }
+
+  .date-time .city {
+    font-size: 2rem;
+  }
+
+  .date-time .time {
+    font-size: 3.5rem;
+  }
+
+  .date-time .day {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet (425px - 768px) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  body {
+    background-image: linear-gradient(#444, #fff);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search {
+    margin-top: 0;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .temp {
+    font-size: 3rem;
+  }
+
+  .temp-feels {
+    font-size: 1.4rem;
+  }
+
+  .col2 span {
+    font-size: 2rem;
+  }
+
+  .pressure,
+  .humidity {
+    margin-right: 20px;
+  }
+
+  .date-time .city {
+    font-size: 2.5rem;
+  }
+
+  .date-time .time {
+    font-size: 4rem;
+  }
+
+  .date-time .day {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    background-image: linear-gradient(#444, #fff);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search {
+    margin-top: 0;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .date-time {
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+  .temp {
+    font-size: 3.5rem;
+  }
+
+  .temp-feels {
+    font-size: 1.6rem;
+  }
+
+  .col2 span {
+    font-size: 2.1rem;
+  }
+
+  .pressure,
+  .humidity {
+    margin-right: 30px;
+  }
+
+  .date-time .city {
+    font-size: 2.5rem;
+  }
+
+  .date-time .time {
+    font-size: 4.1rem;
+  }
+
+  .date-time .day {
+    font-size: 1.4rem;
+  }
+}

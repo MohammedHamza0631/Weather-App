@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="/public/styles/main.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="toggle" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="search">
+        <form action="/" method="GET">
+          <input
+            type="text"
+            name="city"
+            id="city"
+            placeholder="Enter the city name"
+          />
+          <button type="submit" id="search">
+            <img src="/public/images/icons8-search-50.png" alt="" />
+          </button>
+        </form>
+      </div>
+      <!-- <div class="current">
+        <form id="currentLocationForm" action="/current" method="GET">
+          <button type="submit">
+            <img src="/public/images/locationpin.png" alt="" />Current Location
+          </button>
+        </form>
+      </div> -->
+    </div>
+
+    <div class="details">
+      <div class="date-time">
+        <span class="city"><%= city %></span>
+        <span class="time"><%= weatherData.c_time %></span>
+        <span class="day"
+          ><%= weatherData.c_date %>, <%= weatherData.c_day %></span
+        >
+      </div>
+
+      <div class="weather">
+        <div class="col1">
+          <div class="weather-item temp">
+            <span><%= weatherData.main.temp %> °C</span>
+          </div>
+          <div class="weather-item temp-feels">
+            <span>Feels like: <%= weatherData.main.feels_like %> &deg;C</span>
+          </div>
+          <div class="weather-item sunrise-time">
+            <img
+              src="/public/images/weather-dashboard-black-sunrise-white-1.png"
+              alt="Sunrise Icon"
+            />
+            <span><%= weatherData.sunrise %></span>
+            <span>Sunrise</span>
+          </div>
+          <div class="weather-item sunset-time">
+            <img
+              src="/public/images/weather-dashboard-black-sunset-white-1.png"
+              alt="Sunset Icon"
+            />
+            <span><%= weatherData.sunset %></span>
+            <span>Sunset</span>
+          </div>
+        </div>
+        <div class="col2">
+          <div class="weather-item weather-type">
+            <img
+              src="http://openweathermap.org/img/wn/<%= weatherData.weather[0].icon %>@2x.png"
+              alt="Weather Icon"
+              height="170px"
+              width="170px"
+            />
+            <span><%= weatherData.weather[0].description %></span>
+          </div>
+        </div>
+
+        <div class="col3">
+          <div class="row">
+            <div class="weather-item humidity">
+              <img
+                src="/public/images/weather-dashboard-black-humidity-1.png"
+                alt="Humidity Icon"
+              />
+              <span><%= weatherData.main.humidity %> %</span>
+              <span>Humidity</span>
+            </div>
+            <div class="weather-item wind-speed">
+              <img
+                src="/public/images/weather-dashboard-black-wind-1.png"
+                alt="Wind Speed Icon"
+              />
+              <span><%= weatherData.wind.speed %> Km/hr</span>
+              <span>Wind Speed</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="weather-item pressure">
+              <img
+                src="/public/images/weather-dashboard-black-pressure-white-1.png"
+                alt="Pressure Icon"
+              />
+              <span><%= weatherData.main.pressure %> Pa</span>
+              <span>Pressure</span>
+            </div>
+            <div class="weather-item uv-index">
+              <img
+                src="/public/images/weather-dashboard-black-uv-white-1.png"
+                alt="UV Index Icon"
+              />
+              <span><%= weatherData.uvi %></span>
+              <span>UV Index</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="day5">
+        <span class="city">NewDelhi </span>
+        <span class="time">01:03</span>
+        <span class="day">Monday, 22 June 2020</span>
+      </div>
+      <div class="Hourly">
+        <span class="city">NewDelhi </span>
+        <span class="time">01:03</span>
+        <span class="day">Monday, 22 June 2020</span>
+      </div> -->
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleSwitch = document.getElementById("toggle");
+        const body = document.body;
+        const weather = document.querySelector(".weather");
+        const date = document.querySelector(".date-time");
+
+        toggleSwitch.addEventListener("change", function () {
+          if (this.checked) {
+            body.classList.add("dark-mode");
+            weather.classList.add("dark-mode");
+            date.classList.add("dark-mode");
+          } else {
+            body.classList.remove("dark-mode");
+            weather.classList.remove("dark-mode");
+            date.classList.remove("dark-mode");
+          }
+        });
+      });
+
+      // Helper function to format the current time
+      function getCurrentTime() {
+        return "<%= weatherData.currentCityTime %>";
+      }
+
+      // Helper function to format the current day
+      function getCurrentDay() {
+        return "<%= weatherData.currentDay %>";
+      }
+    </script>
+    <!-- <script src="/scripts/main.js"></script> -->
+  </body>
+</html>
