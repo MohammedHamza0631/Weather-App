@@ -365,6 +365,27 @@ input:checked + .slider:before {
   );
   color: #fff;
 }
+/* Mobile (320px - 375px) */
+@media only screen and (min-width: 320px) and (max-width: 380px) {
+  .search {
+    flex-direction: row;
+    margin-top: 5px;
+  }
+
+  .search button {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  input {
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+
+  .toggle-container {
+    margin-right: 3px;
+  }
+}
 
 /* Mobile (320px - 425px) */
 @media only screen and (min-width: 320px) and (max-width: 600px) {
