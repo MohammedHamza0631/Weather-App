@@ -8,6 +8,7 @@
 }
 body {
   background-image: linear-gradient(to right, #fff, #444);
+  background-size: 100% 100%;
 }
 .header {
   display: flex;
@@ -16,76 +17,40 @@ body {
   padding: 20px 20px;
 }
 
-.search {
+.inputBox_container {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  border-radius: 20px;
+  flex-direction: row;
+  max-width: 14em;
+  width: fit-content;
+  height: fit-content;
+  background-color: #5c6370;
+  border-radius: 0.8em;
   overflow: hidden;
 }
+.inputBox_container:focus-within {
+  border: 1px solid #2b2b2b ;
+}
+.search_icon {
+  height: 1em;
+  padding: 0 0.5em 0 0.8em;
+  fill: #abb2bf;
+}
 
-.search button {
-  position: relative;
-  top: 0px;
-  margin-left: 10px;
-  background: rgb(255, 255, 255);
-  border: 1px solid transparent;
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #000;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
-}
-.search button img {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  margin-bottom: 2px;
-  vertical-align: middle;
-  display: inline-block;
-  position: relative;
-  left: 2px;
-  transition: all 0.3s ease;
-}
-input {
-  border: 1px solid #000;
-  border-radius: 40px;
-  padding: 5px 10px 5px 10px;
-  font-size: 18px;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+.inputBox {
+  background-color: transparent;
+  color: #ffffff;
   outline: none;
-}
-input:focus {
-  border: 1px solid #323232e9;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
-}
-.current button {
-  position: relative;
-  top: 0px;
-  background: rgb(38, 203, 38);
-  border: 1px solid transparent;
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  width: 100%;
+  border: 0;
+  padding: 0.5em 1.5em 0.5em 0;
+  font-size: 1em;
 }
 
-.current button img {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  margin-bottom: 2px;
-  vertical-align: middle;
-  display: inline-block;
-  position: relative;
-  left: 0px;
-  transition: all 0.3s ease;
+::placeholder {
+  color: #e7e7e7;
 }
+
 .toggle-container {
   display: flex;
   align-items: center;
@@ -158,8 +123,7 @@ input:checked + .slider:before {
   gap: 15px;
 }
 
-.date-time,
-.day5 {
+.date-time {
   text-align: center;
   grid-column: span 1;
   border: 1px solid transparent;
@@ -182,17 +146,6 @@ input:checked + .slider:before {
 .date-time .time {
   font-size: 40px;
   font-weight: 600;
-}
-
-.Hourly {
-  text-align: center;
-  grid-column: span 2; /* Each of these divs will take two columns */
-  border: 1px solid transparent;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 20px;
-  background: #b0bdc5;
 }
 
 .weather {
@@ -300,16 +253,12 @@ input:checked + .slider:before {
 .dark-mode {
   background-image: linear-gradient(to right, #636363, #373636);
 }
-.dark-mode .search button {
+.dark-mode .inputBox_container {
   background: linear-gradient(
     110deg,
     #383838 0%,
     rgba(158, 158, 158, 0) 71.82%
   );
-  border: 1px solid transparent;
-}
-.dark-mode .search button img {
-  filter: invert(1);
 }
 .dark-mode input {
   background: linear-gradient(
@@ -320,13 +269,13 @@ input:checked + .slider:before {
   border: 1px solid transparent;
   color: #ffffff;
 }
+.dark-mode .inputBox_container:focus-within {
+  border: 1px solid #ffffff;
+}
 .dark-mode input::placeholder {
   color: #ffffff;
 }
-.dark-mode input:focus {
-  border: 1px solid #b7b6b6e9;
-  box-shadow: 0 0 1px #ffffff;
-}
+
 .dark-mode .weather {
   background: linear-gradient(
     110deg,
@@ -366,26 +315,7 @@ input:checked + .slider:before {
   color: #fff;
 }
 /* Mobile (320px - 375px) */
-@media only screen and (min-width: 320px) and (max-width: 380px) {
-  .search {
-    flex-direction: row;
-    margin-top: 5px;
-  }
 
-  .search button {
-    padding: 5px;
-    font-size: 12px;
-  }
-
-  input {
-    padding: 5px 8px;
-    font-size: 14px;
-  }
-
-  .toggle-container {
-    margin-right: 3px;
-  }
-}
 
 /* Mobile (320px - 425px) */
 @media only screen and (min-width: 320px) and (max-width: 600px) {
@@ -398,10 +328,6 @@ input:checked + .slider:before {
     text-align: center;
     display: flex;
     align-items: center;
-  }
-
-  .search {
-    margin-top: 5px;
   }
 
   .details {
@@ -432,11 +358,11 @@ input:checked + .slider:before {
     height: 40px;
   }
   .temp {
-    font-size: 2.3rem;
+    font-size: 1.9rem;
   }
 
   .temp-feels {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .col2 img {
     width: 100px;
@@ -463,6 +389,22 @@ input:checked + .slider:before {
     font-size: 1.2rem;
   }
 }
+@media only screen and (min-width: 320px) and (max-width: 380px) {
+  input {
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+
+  .toggle-container {
+    margin-right: 35px;
+  }
+  .temp {
+    font-size: 1.6rem;
+  }
+  .temp-feels {
+    font-size: 1.1rem;
+  }
+}
 
 /* Tablet (425px - 768px) */
 @media only screen and (min-width: 601px) and (max-width: 768px) {
@@ -475,10 +417,6 @@ input:checked + .slider:before {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .search {
-    margin-top: 0;
   }
 
   .details {
@@ -528,10 +466,6 @@ input:checked + .slider:before {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .search {
-    margin-top: 0;
   }
 
   .details {
