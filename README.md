@@ -7,4 +7,4 @@ This is a weather app built using EJS, CSS, and JavaScript providing detailed we
 -  Type the command <code>node index.js</code> to start the server.
 - Open any web browser and type ```localhost:3000``` to run this Web-App.
 ### Method 2:
-- Access the site <a href="https://weather-app-lvn5.onrender.com">here</a>
+- Access the site <a href="https://weather-app-xthy.onrender.com/">here</a>
