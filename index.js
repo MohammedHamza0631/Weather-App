@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
@@ -53,7 +53,7 @@ const getWeatherData = async (city) => {
 
     const sunrise = sunriseSetData.results.sunrise;
     const sunset = sunriseSetData.results.sunset;
-    // console.log(sunriseSetData);
+    // console.log(weatherData);
     return {
       ...weatherData,
       uvi: uvData.value,
